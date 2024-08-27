@@ -103,5 +103,6 @@ eselect locale set 4
 
 # Kernel Config
 
+echo 'GRUB_PLATFORMS="efi-64"' >> /etc/portage/make.conf
 emerge --verbose --autounmask-continue=y sys-kernel/gentoo-sources
 emerge --verbose --autounmask-continue=y sys-kernel/linux-firmware
