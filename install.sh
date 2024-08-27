@@ -101,5 +101,7 @@ eselect locale set 4
 # >>> Regenerating /etc/ld.so.cache...
 # (chroot) xwing-7760 /usr/share/zoneinfo/America # 
 
+# Kernel Config
 
+emerge --verbose --autounmask-continue=y sys-kernel/gentoo-sources
 
