@@ -195,4 +195,5 @@ emerge --ask --verbose net-misc/networkmanager
 emerge --ask --verbose sys-boot/grub
 grub-install --efi-directory=/efi
 emerge --ask app-text/tree
+systemctl disable systemd-networkd-wait-online.service 
 systemctl enable NetworkManager
