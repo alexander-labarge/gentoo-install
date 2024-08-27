@@ -3,9 +3,6 @@
 set -e
 
 DRIVE="/dev/sda"
-
-echo "Backing up and generating fstab..."
-
 # Backup the current fstab
 cp /etc/fstab /etc/fstab.backup
 
