@@ -104,4 +104,4 @@ eselect locale set 4
 # Kernel Config
 
 emerge --verbose --autounmask-continue=y sys-kernel/gentoo-sources
-
+emerge --verbose --autounmask-continue=y sys-kernel/linux-firmware
