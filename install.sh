@@ -179,3 +179,6 @@ nano /etc/hosts
 # (chroot) root@xwing-7760 /tmp # 
 
 passwd
+systemd-machine-id-setup
+systemd-firstboot --prompt
+systemctl preset-all --preset-mode=enable-only
