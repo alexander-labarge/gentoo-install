@@ -115,4 +115,8 @@ eselect kernel set 1
 eselect kernel list
 cd /usr/src/linux
 
+CURRENT_DATE=$(date +%Y%m%d) # Get the current date in YYYYMMDD format
+echo "Generating initramfs and compiling kernel with Genkernel, including today's date ($CURRENT_DATE) in the kernel version..."
+genkernel --kernel-config=/${KERNEL_CONFIG} --kernel-append-localversion=-intel-optimized-$CURRENT_DATE --no-mrproper --no-clean --mountboot --microcode initramfs --install all
+echo "Kernel and initramfs generation complete with date embedded in version."
 
