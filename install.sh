@@ -108,3 +108,4 @@ emerge --verbose --autounmask-continue=y sys-kernel/gentoo-sources
 emerge --verbose --autounmask-continue=y sys-kernel/linux-firmware
 emerge --verbose --autounmask-continue=y sys-kernel/genkernel
 emerge --verbose --autounmask-continue=y --noreplace sys-firmware/intel-microcode
+iucode_tool -S --write-earlyfw=/boot/early_ucode.cpio /lib/firmware/intel-ucode/*
