@@ -183,3 +183,8 @@ systemd-machine-id-setup
 systemd-firstboot --prompt
 systemctl preset-all --preset-mode=enable-only
 systemctl enable sshd
+systemctl enable getty@tty1.service
+emerge --ask app-shells/bash-completion
+systemctl enable systemd-timesyncd.service
+emerge --ask sys-block/io-scheduler-udev-rules
+
