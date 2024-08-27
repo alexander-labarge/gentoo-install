@@ -121,4 +121,7 @@ CURRENT_DATE=$(date +%Y%m%d) # Get the current date in YYYYMMDD format
 echo "Generating initramfs and compiling kernel with Genkernel, including today's date ($CURRENT_DATE) in the kernel version..."
 genkernel --kernel-append-localversion=-intel-optimized-$CURRENT_DATE --mountboot --microcode initramfs --install all
 
-cd /tmp && wget https://github.com/alexander-labarge/gentoo-install/raw/main/fstab-gen.sh && chmod +x /tmp/fstab-gen.sh && ./fstab-gen.sh || echo "failure"
+cd /tmp
+wget https://github.com/alexander-labarge/gentoo-install/raw/main/fstab-gen.sh
+chmod +x /tmp/fstab-gen.sh
+./fstab-gen.sh || echo "failure"
