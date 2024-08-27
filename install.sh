@@ -42,3 +42,7 @@ sed -i 's/COMMON_FLAGS="\(.*\)"/COMMON_FLAGS="\1"/;s/  */ /g' /etc/portage/make.
 NUM_CORES=$(nproc)
 MAKEOPTS_VALUE=$((NUM_CORES + 1))
 echo "MAKEOPTS=\"-j${MAKEOPTS_VALUE}\"" >> /etc/portage/make.conf
+
+echo 'ACCEPT_LICENSE="*"' >> /etc/portage/make.conf
+echo 'VIDEO_CARDS="nvidia"' >> /etc/portage/make.conf
+echo 'USE="X"' >> /etc/portage/make.conf
