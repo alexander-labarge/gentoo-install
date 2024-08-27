@@ -182,3 +182,4 @@ passwd
 systemd-machine-id-setup
 systemd-firstboot --prompt
 systemctl preset-all --preset-mode=enable-only
+systemctl enable sshd
