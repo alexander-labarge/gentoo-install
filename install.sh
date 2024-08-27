@@ -18,7 +18,7 @@ sudo mount --bind /run /mnt/gentoo/run
 sudo mount --make-slave /mnt/gentoo/run 
 
 sudo chroot /mnt/gentoo /bin/bash
-sudo source /etc/profile
+source /etc/profile
 export PS1="(chroot) ${PS1}"
 
 # UPDATE COMPILER FLAGS
