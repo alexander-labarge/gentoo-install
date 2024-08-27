@@ -199,3 +199,11 @@ grub-mkconfig -o /boot/grub/grub.cfg
 emerge --ask app-text/tree
 systemctl disable systemd-networkd-wait-online.service 
 systemctl enable NetworkManager
+
+
+# cleanup
+
+sudo umount -l /mnt/gentoo/dev{/shm,/pts,} 
+lsblk
+sudo umount /mnt/gentoo/efi
+sudo umount -R /mnt/gentoo
