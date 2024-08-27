@@ -109,3 +109,10 @@ emerge --verbose --autounmask-continue=y sys-kernel/linux-firmware
 emerge --verbose --autounmask-continue=y sys-kernel/genkernel
 emerge --verbose --autounmask-continue=y --noreplace sys-firmware/intel-microcode
 iucode_tool -S --write-earlyfw=/boot/early_ucode.cpio /lib/firmware/intel-ucode/*
+
+# Instead of manual symlink - allow gentoo to do it for us
+eselect kernel set 1
+eselect kernel list
+cd /usr/src/linux
+
+
