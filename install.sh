@@ -51,7 +51,7 @@ echo 'VIDEO_CARDS="nvidia"' >> /etc/portage/make.conf
 echo 'USE="X"' >> /etc/portage/make.conf
 
 eselect profile set default/linux/amd64/23.0/desktop/gnome/systemd
-emerge --ask --oneshot app-portage/cpuid2cpuflags
+emerge --oneshot app-portage/cpuid2cpuflags
 cpuid2cpuflags 
 echo "*/* $(cpuid2cpuflags)" > /etc/portage/package.use/00cpu-flags
 
