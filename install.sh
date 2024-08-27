@@ -190,4 +190,5 @@ systemctl enable getty@tty1.service
 emerge --ask app-shells/bash-completion
 systemctl enable systemd-timesyncd.service
 emerge --ask sys-block/io-scheduler-udev-rules
-
+emerge --ask net-wireless/iw net-wireless/wpa_supplicant
+emerge --ask --verbose net-misc/networkmanager
