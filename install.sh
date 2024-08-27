@@ -14,3 +14,7 @@ sudo mount --rbind /dev /mnt/gentoo/dev
 sudo mount --make-rslave /mnt/gentoo/dev
 sudo mount --bind /run /mnt/gentoo/run
 sudo mount --make-slave /mnt/gentoo/run 
+
+sudo chroot /mnt/gentoo /bin/bash
+sudo source /etc/profile
+sudo export PS1="(chroot) ${PS1}"
