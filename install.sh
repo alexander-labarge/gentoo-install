@@ -194,7 +194,8 @@ emerge --ask net-wireless/iw net-wireless/wpa_supplicant
 emerge --ask --verbose net-misc/networkmanager
 emerge --ask --verbose sys-boot/grub
 grub-install --efi-directory=/efi
-#grub-install --target=x86_64-efi --efi-directory=/efi --removable
+grub-install --target=x86_64-efi --efi-directory=/efi --removable
+grub-mkconfig -o /boot/grub/grub.cfg
 emerge --ask app-text/tree
 systemctl disable systemd-networkd-wait-online.service 
 systemctl enable NetworkManager
