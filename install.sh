@@ -126,3 +126,10 @@ wget https://github.com/alexander-labarge/gentoo-install/raw/main/fstab-gen.sh
 chmod +x /tmp/fstab-gen.sh
 #nano /tmp/fstab-gen.sh
 ./fstab-gen.sh || echo "failure"
+
+
+# system config:
+
+HOSTNAME_CHOICE="whatyouwant"
+
+echo ${HOSTNAME_CHOICE} > /etc/hostname
