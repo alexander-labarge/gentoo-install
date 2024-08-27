@@ -21,6 +21,9 @@ sudo chroot /mnt/gentoo /bin/bash
 source /etc/profile
 export PS1="(chroot) ${PS1}"
 
+emerge-webrsync
+emerge --sync
+
 # UPDATE COMPILER FLAGS
 
 cp /etc/portage/make.conf /etc/portage/make.conf.bak2
