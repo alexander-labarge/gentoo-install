@@ -177,3 +177,5 @@ nano /etc/hosts
 # # APNIC, LACNIC, RIPE NCC, or AfriNIC.)
 # #
 # (chroot) root@xwing-7760 /tmp # 
+
+passwd
