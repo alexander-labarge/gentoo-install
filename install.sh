@@ -60,3 +60,46 @@ emerge --ask --verbose --update --deep --newuse @world
 # update localtime
 ln -sf /usr/share/zoneinfo/America/New_York /etc/localtime
 
+# uncomment en_US.UTF-8 UTF-8
+nano /etc/locale.gen
+
+locale-gen
+eselect locale list # - pick the one next
+eselect locale set 4
+# example:
+# (chroot) xwing-7760 /usr/share/zoneinfo/America # ln -sf /usr/share/zoneinfo/America/New_York /etc/localtime
+# (chroot) xwing-7760 /usr/share/zoneinfo/America # eselect locale list
+# Available targets for the LANG variable:
+#   [1]   C
+#   [2]   C.utf8
+#   [3]   POSIX
+#   [4]   C.UTF8 *
+#   [ ]   (free form)
+# (chroot) xwing-7760 /usr/share/zoneinfo/America # nano /etc/local
+# locale.conf  locale.gen   localtime    
+# (chroot) xwing-7760 /usr/share/zoneinfo/America # nano /etc/local
+# locale.conf  locale.gen   localtime    
+# (chroot) xwing-7760 /usr/share/zoneinfo/America # nano /etc/locale.gen 
+# (chroot) xwing-7760 /usr/share/zoneinfo/America # locale-gen
+#  * Generating 2 locales (this might take a while) with 16 jobs
+#  *  (2/2) Generating C.UTF-8 ...                                                                                         [ ok ]
+#  *  (1/2) Generating en_US.UTF-8 ...                                                                                     [ ok ]
+#  * Generation complete
+#  * Adding locales to archive ...                                                                                         [ ok ]
+# (chroot) xwing-7760 /usr/share/zoneinfo/America # eselect locale list
+# Available targets for the LANG variable:
+#   [1]   C
+#   [2]   C.utf8
+#   [3]   POSIX
+#   [4]   en_US.utf8
+#   [5]   C.UTF8 *
+#   [ ]   (free form)
+# (chroot) xwing-7760 /usr/share/zoneinfo/America # eselect locale set 4
+# Setting LANG to en_US.utf8 ...
+# Run ". /etc/profile" to update the variable in your shell.
+# (chroot) xwing-7760 /usr/share/zoneinfo/America # env-update && source /etc/profile && export PS1="(chroot) ${PS1}"
+# >>> Regenerating /etc/ld.so.cache...
+# (chroot) xwing-7760 /usr/share/zoneinfo/America # 
+
+
+
