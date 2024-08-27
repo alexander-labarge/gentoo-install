@@ -182,6 +182,9 @@ passwd
 systemd-machine-id-setup
 systemd-firstboot --prompt
 systemctl preset-all --preset-mode=enable-only
+
+
+
 systemctl enable sshd
 systemctl enable getty@tty1.service
 emerge --ask app-shells/bash-completion
