@@ -57,3 +57,6 @@ echo "*/* $(cpuid2cpuflags)" > /etc/portage/package.use/00cpu-flags
 
 emerge --ask --verbose --update --deep --newuse @world
 
+# update localtime
+ln -sf /usr/share/zoneinfo/America/New_York /etc/localtime
+
