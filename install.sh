@@ -193,3 +193,5 @@ emerge --ask sys-block/io-scheduler-udev-rules
 emerge --ask net-wireless/iw net-wireless/wpa_supplicant
 emerge --ask --verbose net-misc/networkmanager
 emerge --ask --verbose sys-boot/grub
+grub-install --efi-directory=/efi
+emerge --ask app-text/tree
