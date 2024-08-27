@@ -21,6 +21,8 @@ sudo chroot /mnt/gentoo /bin/bash
 sudo source /etc/profile
 sudo export PS1="(chroot) ${PS1}"
 
+# UPDATE COMPILER FLAGS
+
 cp /etc/portage/make.conf /etc/portage/make.conf.bak2
 OPTIMIZED_FLAGS="$(gcc -v -E -x c /dev/null -o /dev/null -march=native 2>&1 | grep /cc1 | sed -n 's/.*-march=\([a-z]*\)/-march=\1/p' | sed 's/-dumpbase null//')"
 
