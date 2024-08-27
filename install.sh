@@ -49,3 +49,6 @@ echo "MAKEOPTS=\"-j${MAKEOPTS_VALUE}\"" >> /etc/portage/make.conf
 echo 'ACCEPT_LICENSE="*"' >> /etc/portage/make.conf
 echo 'VIDEO_CARDS="nvidia"' >> /etc/portage/make.conf
 echo 'USE="X"' >> /etc/portage/make.conf
+
+eselect profile set default/linux/amd64/23.0/desktop/gnome/systemd
+
