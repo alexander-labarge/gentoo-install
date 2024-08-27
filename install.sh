@@ -1,5 +1,7 @@
 #!/bin/bash
 
+# after drive partition + file system creation
+
 #sudo rm -rf /mnt/gentoo
 sudo chown -R $USER:$USER /mnt/gentoo && sudo apt-get install wget curl git vim -y
 cd /mnt/gentoo
@@ -18,3 +20,23 @@ sudo mount --make-slave /mnt/gentoo/run
 sudo chroot /mnt/gentoo /bin/bash
 sudo source /etc/profile
 sudo export PS1="(chroot) ${PS1}"
+
+cp /etc/portage/make.conf /etc/portage/make.conf.bak2
+OPTIMIZED_FLAGS="$(gcc -v -E -x c /dev/null -o /dev/null -march=native 2>&1 | grep /cc1 | sed -n 's/.*-march=\([a-z]*\)/-march=\1/p' | sed 's/-dumpbase null//')"
+
+if [ -z "${OPTIMIZED_FLAGS}" ]; then
+    einfo "Failed to extract optimized CPU flags"
+    exit 1
+fi
+
+# Remove trailing space in COMMON_FLAGS
+COMMON_FLAGS=$(echo "${COMMON_FLAGS}" | sed 's/ *$//')
+
+# Update COMMON_FLAGS in make.conf
+sed -i "/^COMMON_FLAGS/c\COMMON_FLAGS=\"-O2 -pipe ${OPTIMIZED_FLAGS}\"" /etc/portage/make.conf
+sed -i 's/COMMON_FLAGS="\(.*\)"/COMMON_FLAGS="\1"/;s/  */ /g' /etc/portage/make.conf
+
+# Assign MAKEOPTS automatically
+NUM_CORES=$(nproc)
+MAKEOPTS_VALUE=$((NUM_CORES + 1))
+echo "MAKEOPTS=\"-j${MAKEOPTS_VALUE}\"" >> /etc/portage/make.conf
