@@ -193,7 +193,10 @@ emerge --ask sys-block/io-scheduler-udev-rules
 emerge --ask net-wireless/iw net-wireless/wpa_supplicant
 emerge --ask --verbose net-misc/networkmanager
 emerge --ask --verbose sys-boot/grub
+<<<<<<< HEAD
 
+=======
+>>>>>>> 0e33c04 (ll)
 grub-mkconfig -o /boot/grub/grub.cfg
 grub-install --efi-directory=/efi
 grub-install --target=x86_64-efi --efi-directory=/efi --removable

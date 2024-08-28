@@ -3,8 +3,14 @@
 set -e
 
 DRIVE="/dev/sda"
+
 # Backup the current fstab
 cp /etc/fstab /etc/fstab.backup
+
+# Function to log messages
+log() {
+    echo "$(date '+%Y-%m-%d %H:%M:%S') - $1"
+}
 
 # Start the fstab generation
 {
@@ -16,14 +22,26 @@ cp /etc/fstab /etc/fstab.backup
 } > /etc/fstab
 
 # /efi partition
-EFI_UUID=$(blkid -o value -s UUID ${DRIVE}1)
-EFI_FSTAB_ENTRY="UUID=${EFI_UUID} /efi vfat defaults 0 2"
-echo "$EFI_FSTAB_ENTRY" >> /etc/fstab
-echo "Added /efi partition to fstab: $EFI_FSTAB_ENTRY"
-ROOT_UUID=$(blkid -o value -s UUID ${DRIVE}2)
-ROOT_FSTAB_ENTRY="UUID=${ROOT_UUID} / ext4 defaults 0 1"
-echo "Adding / partition to fstab: $ROOT_FSTAB_ENTRY"
-echo "$ROOT_FSTAB_ENTRY" >> /etc/fstab
+EFI_PARTUUID=$(blkid -o value -s PARTUUID ${DRIVE}1)
+if [ -z "$EFI_PARTUUID" ]; then
+    log "Error: Unable to retrieve PARTUUID for /efi partition."
+    exit 1
+fi
 
-echo "Fstab generation complete. Contents of /etc/fstab:"
+EFI_FSTAB_ENTRY="PARTUUID=${EFI_PARTUUID} /efi vfat defaults,noatime 0 2"
+echo "$EFI_FSTAB_ENTRY" >> /etc/fstab
+log "Added /efi partition to fstab: $EFI_FSTAB_ENTRY"
+
+# / root partition
+ROOT_PARTUUID=$(blkid -o value -s PARTUUID ${DRIVE}2)
+if [ -z "$ROOT_PARTUUID" ]; then
+    log "Error: Unable to retrieve PARTUUID for / partition."
+    exit 1
+fi
+
+ROOT_FSTAB_ENTRY="PARTUUID=${ROOT_PARTUUID} / ext4 defaults,noatime,errors=remount-ro 0 1"
+echo "$ROOT_FSTAB_ENTRY" >> /etc/fstab
+log "Added / partition to fstab: $ROOT_FSTAB_ENTRY"
+
+log "Fstab generation complete. Contents of /etc/fstab:"
 cat /etc/fstab
